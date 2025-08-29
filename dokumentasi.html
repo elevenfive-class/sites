@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElevenFiveNews - Dokumentasi Kenangan</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin:0; background:#f4f4f4;}
+    header {background:#fff; border-bottom:2px solid #ddd; display:flex; align-items:center; justify-content:space-between; padding:10px 20px;}
+    header img {height:50px;}
+    nav a {margin:0 15px; text-decoration:none; color:#333; font-weight:bold;}
+    nav a:hover {color:#0073e6;}
+    .container {max-width:1200px; margin:30px auto; padding:20px;}
+    h2 {text-align:center; margin-bottom:20px;}
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      background:white;
+      border-radius:10px;
+      overflow: hidden;
+      box-shadow:0 3px 8px rgba(0,0,0,0.1);
+      cursor:pointer;
+      transition: transform 0.2s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display:block;
+    }
+    .gallery-item p {
+      margin:10px;
+      font-size:14px;
+      color:#444;
+    }
+    footer {text-align:center; padding:20px; background:#333; color:white; margin-top:30px;}
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    }
+    .lightbox span {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="https://files.catbox.moe/5rwdy9.png" alt="ElevenFiveNews Logo">
+    </div>
+    <nav>
+      <a href="beranda.html">Beranda</a>
+      <a href="artikel.html">Artikel</a>
+      <a href="profile.html">Profile</a>
+      <a href="kontak.html">Kontak</a>
+      <a href="confess.html">Confess</a>
+      <a href="confess-list.html">Daftar Confess</a>
+      <a href="dokumentasi.html">Dokumentasi</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Foto Dokumentasi Kenangan</h2>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://source.unsplash.com/400x300/?school,event" alt="Foto 1">
+        <p>Acara Perpisahan Kelas 2025</p>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://source.unsplash.com/400x300/?students,group" alt="Foto 2">
+        <p>Foto Bersama Angkatan</p>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://source.unsplash.com/400x300/?classroom,study" alt="Foto 3">
+        <p>Kenangan Belajar di Kelas</p>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://source.unsplash.com/400x300/?friends,smile" alt="Foto 4">
+        <p>Kebersamaan Teman-Teman</p>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://source.unsplash.com/400x300/?celebration,school" alt="Foto 5">
+        <p>Acara Panggung Seni Sekolah</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="">
+  </div>
+
+  <footer>
+    &copy; 2025 ElevenFiveNews. Semua Hak Dilindungi.
+  </footer>
+
+  <script>
+    function openLightbox(el){
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = el.querySelector("img").src;
+    }
+    function closeLightbox(){
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

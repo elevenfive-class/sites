@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElevenFiveNews - Confess</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin:0; background:#f4f4f4;}
+    header {background:#fff; border-bottom:2px solid #ddd; display:flex; align-items:center; justify-content:space-between; padding:10px 20px;}
+    header img {height:50px;}
+    nav a {margin:0 15px; text-decoration:none; color:#333; font-weight:bold;}
+    nav a:hover {color:#0073e6;}
+    .container {max-width:800px; margin:30px auto; background:#fff; padding:25px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+    h2 {text-align:center; margin-bottom:20px;}
+    label {font-weight:bold; display:block; margin-top:15px; margin-bottom:5px;}
+    input,textarea {width:100%; padding:12px; border-radius:6px; border:1px solid #ccc; font-size:15px;}
+    textarea {height:150px; resize:vertical;}
+    button {margin-top:20px; width:100%; background:#0073e6; border:none; padding:15px; border-radius:8px; color:white; font-size:16px; font-weight:bold; cursor:pointer;}
+    button:hover {background:#005bb5;}
+    footer {text-align:center; padding:20px; background:#333; color:white; margin-top:30px;}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="https://files.catbox.moe/5rwdy9.png" alt="ElevenFiveNews Logo">
+    </div>
+    <nav>
+      <a href="beranda.html">Beranda</a>
+      <a href="artikel.html">Artikel</a>
+      <a href="profile.html">Profile</a>
+      <a href="kontak.html">Kontak</a>
+      <a href="confess.html">Confess</a>
+      <a href="confess-list.html">Daftar Confess</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Kirim Confess Kamu</h2>
+    <form id="confessForm">
+      <label for="nama">Nama (Opsional):</label>
+      <input type="text" id="nama" name="nama" placeholder="Boleh dikosongkan...">
+
+      <label for="judul">Judul Confess:</label>
+      <input type="text" id="judul" name="judul" required placeholder="Masukkan judul confess">
+
+      <label for="isi">Isi Confess:</label>
+      <textarea id="isi" name="isi" required placeholder="Tulis confess kamu di sini..."></textarea>
+
+      <button type="submit">Kirim</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 ElevenFiveNews. Semua Hak Dilindungi.
+  </footer>
+
+  <script>
+    document.getElementById("confessForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      let nama = document.getElementById("nama").value || "Anonim";
+      let judul = document.getElementById("judul").value;
+      let isi = document.getElementById("isi").value;
+
+      // Ambil data lama dari localStorage
+      let confessList = JSON.parse(localStorage.getItem("confessList")) || [];
+
+      // Tambahkan confess baru
+      confessList.push({nama:nama, judul:judul, isi:isi, waktu:new Date().toLocaleString()});
+
+      // Simpan ke localStorage
+      localStorage.setItem("confessList", JSON.stringify(confessList));
+
+      alert("Confess berhasil dikirim!");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
